@@ -1,59 +1,79 @@
-# AngularTaskFlow
+# Angular Task Flow
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.8.
+Este projeto é uma aplicação de gerenciamento de tarefas desenvolvida com Angular. Permite criar, editar, visualizar e organizar tarefas de forma eficiente, utilizando uma arquitetura modular com componentes, serviços e páginas dedicadas.
 
-## Development server
+## Pré-requisitos
 
-To start a local development server, run:
+Antes de começar, certifique-se de ter instalado:
+- [Node.js](https://nodejs.org/) (versão 18 ou superior)
+- [Angular CLI](https://angular.dev/tools/cli) (versão 21.2.8 ou superior)
+- Gerenciador de pacotes: [pnpm](https://pnpm.io/) (recomendado) ou npm
 
+## Instalação
+
+1. Clone o repositório:
+   ```bash
+   git clone <url-do-repositorio>
+   cd angular-task-flow
+   ```
+
+2. Instale as dependências:
+   ```bash
+   pnpm install
+   ```
+
+## Executando o Servidor de Desenvolvimento
+
+Para iniciar o servidor local de desenvolvimento, execute:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abra o navegador e acesse `http://localhost:4200/`. A aplicação será recarregada automaticamente sempre que você modificar os arquivos fonte.
 
-## Code scaffolding
+## Geração de Código
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+O Angular CLI oferece ferramentas poderosas para geração de código. Para criar um novo componente, execute:
 ```bash
-ng generate component component-name
+ng generate component nome-do-componente
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+Para ver a lista complete de esquemas disponíveis (como componentes, diretivas ou pipes), execute:
 ```bash
 ng generate --help
 ```
 
-## Building
+## Build
 
-To build the project run:
-
+Para compilar o projeto, execute:
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Isso compilará o projeto e armazenará os artefatos de build no diretório `dist/`. Por padrão, o build de produção otimiza a aplicação para performance e velocidade.
 
-## Running unit tests
+## Executando Testes Unitários
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
+Para executar testes unitários com o [Vitest](https://vitest.dev/), use:
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
+## Executando Testes End-to-End
 
-For end-to-end (e2e) testing, run:
-
+Para testes end-to-end (e2e), execute:
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+O Angular CLI não vem com um framework de teste e2e por padrão. Escolha um que atenda às suas necessidades.
 
-## Additional Resources
+## Estrutura do Projeto
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `src/app/core/`: Lógica central da aplicação
+- `src/app/features/tasks/`: Funcionalidades relacionadas a tarefas (componentes, páginas, serviços, modelos)
+- `src/app/shared/`: Componentes e utilitários compartilhados
+
+## Recursos Adicionais
+
+Para mais informações sobre o uso do Angular CLI, incluindo referências detalhadas de comandos, visite a [Visão Geral e Referência de Comandos do Angular CLI](https://angular.dev/tools/cli).
