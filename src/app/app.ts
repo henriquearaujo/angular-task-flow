@@ -26,8 +26,8 @@ export class App {
   addTask(): void {
     const newTask: Task = {
       id: crypto.randomUUID(),
-      title: 'New Angular task',
-      description: 'Practice components, services and state management.',
+      title: 'Nova Tarefa',
+      description: 'Pratique componentes, serviços e gerenciamento de estado.',
       status: 'pending',
       createdAt: new Date().toISOString(),
     };
