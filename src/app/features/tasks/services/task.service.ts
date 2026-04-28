@@ -6,21 +6,22 @@ const STORAGE_KEY = 'tasks';
 @Injectable({
   providedIn: 'root',
 })
+
 export class TaskService {
 
   private getTasks(): Task[] {
-  if (typeof window === 'undefined') return [];
+    if (typeof window === 'undefined') return [];
 
-  const data = localStorage.getItem(STORAGE_KEY);
-  if (!data) return [];
+    const data = localStorage.getItem(STORAGE_KEY);
+    if (!data) return [];
 
-  const parsed = JSON.parse(data);
+    const parsed = JSON.parse(data);
 
-  return parsed.map((task: any) => ({
-    ...task,
-    status: task.status === 'completed' ? 'completed' : 'pending',
-  }));
-}
+    return parsed.map((task: any) => ({
+      ...task,
+      status: task.status === 'completed' ? 'completed' : 'pending',
+    }));
+  }
 
   private saveTasks(tasks: Task[]): void {
     if (typeof window === 'undefined') return;
