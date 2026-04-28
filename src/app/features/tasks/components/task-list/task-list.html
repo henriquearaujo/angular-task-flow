@@ -1,0 +1,23 @@
+<section class="bg-slate-900 rounded-2xl border border-slate-800 p-4">
+  <div class="mb-4">
+    <h3 class="text-lg font-semibold">Tarefas</h3>
+    <p class="text-sm text-slate-400">Sua lista de tarefas</p>
+  </div>
+
+  @if (tasks.length === 0) {
+    <div class="rounded-xl border border-dashed border-slate-700 p-6 text-center text-slate-400">
+      Nenhuma tarefa encontrada. Crie sua primeira tarefa 🚀
+    </div>
+  } @else {
+    <div class="space-y-3">
+      @for (task of tasks; track task.id) {
+        <app-task-card
+          [task]="task"
+          (toggle)="toggle.emit($event)"
+          (edit)="edit.emit($event)"
+          (remove)="remove.emit($event)"
+        />
+      }
+    </div>
+  }
+</section>
