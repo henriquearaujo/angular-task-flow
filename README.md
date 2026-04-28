@@ -1,17 +1,31 @@
 # Angular Task Flow
 
-Este projeto é uma aplicação de gerenciamento de tarefas desenvolvida com Angular. Permite criar, editar, visualizar e organizar tarefas de forma eficiente, utilizando uma arquitetura modular com componentes, serviços e páginas dedicadas.
+Uma aplicação simples e eficiente para gerenciamento de tarefas pessoais, desenvolvida com Angular. Permite adicionar, visualizar, alternar o status e remover tarefas, com dados armazenados localmente no navegador.
+
+## Funcionalidades
+
+- **Painel de Controle**: Visualize estatísticas rápidas (total, concluídas e pendentes).
+- **Lista de Tarefas**: Gerencie tarefas com título, descrição e status.
+- **Persistência Local**: Dados salvos no localStorage do navegador.
+- **Interface Responsiva**: Design moderno com Tailwind CSS.
+
+## Tecnologias Utilizadas
+
+- **Angular 21**: Framework principal para construção da aplicação.
+- **Tailwind CSS 4**: Estilização utilitária para interface responsiva.
+- **TypeScript**: Tipagem estática para maior robustez.
+- **RxJS**: Programação reativa para gerenciamento de estado.
+- **Vitest**: Testes unitários rápidos e modernos.
+- **Prettier**: Formatação automática de código.
 
 ## Pré-requisitos
 
-Antes de começar, certifique-se de ter instalado:
-- [Node.js](https://nodejs.org/) (versão 18 ou superior)
-- [Angular CLI](https://angular.dev/tools/cli) (versão 21.2.8 ou superior)
-- Gerenciador de pacotes: [pnpm](https://pnpm.io/) (recomendado) ou npm
+- Node.js (versão 18+)
+- pnpm (recomendado) ou npm
 
 ## Instalação
 
-1. Clone o repositório:
+1. Clone o repositório e entre na pasta:
    ```bash
    git clone <url-do-repositorio>
    cd angular-task-flow
@@ -22,32 +36,47 @@ Antes de começar, certifique-se de ter instalado:
    pnpm install
    ```
 
-## Executando o Servidor de Desenvolvimento
+## Uso
 
-Para iniciar o servidor local de desenvolvimento, execute:
+### Desenvolvimento
+Inicie o servidor local:
 ```bash
+pnpm start
+# ou
 ng serve
 ```
+Acesse `http://localhost:4200` no navegador.
 
-Abra o navegador e acesse `http://localhost:4200/`. A aplicação será recarregada automaticamente sempre que você modificar os arquivos fonte.
-
-## Geração de Código
-
-O Angular CLI oferece ferramentas poderosas para geração de código. Para criar um novo componente, execute:
+### Build de Produção
+Compile para produção:
 ```bash
-ng generate component nome-do-componente
-```
-
-Para ver a lista complete de esquemas disponíveis (como componentes, diretivas ou pipes), execute:
-```bash
-ng generate --help
-```
-
-## Build
-
-Para compilar o projeto, execute:
-```bash
+pnpm run build
+# ou
 ng build
+```
+
+### Testes
+Execute os testes:
+```bash
+pnpm test
+# ou
+ng test
+```
+
+## Estrutura do Projeto
+
+- `src/app/`: Código da aplicação
+  - `core/`: Serviços e lógica central
+  - `features/tasks/`: Funcionalidades relacionadas a tarefas
+  - `shared/`: Componentes compartilhados
+- `public/`: Assets estáticos
+- `src/styles.css`: Estilos globais com Tailwind
+
+## Comandos Úteis
+
+- `ng generate component <nome>`: Criar novo componente
+- `ng generate service <nome>`: Criar novo serviço
+- `pnpm run watch`: Build em modo watch para desenvolvimento
 ```
 
 Isso compilará o projeto e armazenará os artefatos de build no diretório `dist/`. Por padrão, o build de produção otimiza a aplicação para performance e velocidade.
