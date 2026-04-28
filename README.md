@@ -1,108 +1,163 @@
-# Angular Task Flow
+# 🚀 Angular Task Flow
 
-Uma aplicação simples e eficiente para gerenciamento de tarefas pessoais, desenvolvida com Angular. Permite adicionar, visualizar, alternar o status e remover tarefas, com dados armazenados localmente no navegador.
+Aplicação moderna de gerenciamento de tarefas desenvolvida com Angular (standalone), focada em arquitetura, experiência do usuário e boas práticas de front-end.
 
-## Funcionalidades
+---
 
-- **Painel de Controle**: Visualize estatísticas rápidas (total, concluídas e pendentes).
-- **Lista de Tarefas**: Gerencie tarefas com título, descrição e status.
-- **Persistência Local**: Dados salvos no localStorage do navegador.
-- **Interface Responsiva**: Design moderno com Tailwind CSS.
+## 🧠 Sobre o projeto
 
-## Tecnologias Utilizadas
+O **Angular Task Flow** foi criado como um projeto de estudo avançado com foco em simular um cenário real de desenvolvimento front-end.
 
-- **Angular 21**: Framework principal para construção da aplicação.
-- **Tailwind CSS 4**: Estilização utilitária para interface responsiva.
-- **TypeScript**: Tipagem estática para maior robustez.
-- **RxJS**: Programação reativa para gerenciamento de estado.
-- **Vitest**: Testes unitários rápidos e modernos.
-- **Prettier**: Formatação automática de código.
+Mais do que um CRUD simples, o projeto foi pensado para representar:
 
-## Pré-requisitos
+- Estrutura escalável
+- Separação clara de responsabilidades
+- Experiência do usuário refinada
+- Código preparado para evolução
 
-- Node.js (versão 18+)
-- pnpm (recomendado) ou npm
+---
 
-## Instalação
+## ✨ Funcionalidades
 
-1. Clone o repositório e entre na pasta:
-   ```bash
-   git clone <url-do-repositorio>
-   cd angular-task-flow
-   ```
+- 📊 Dashboard com métricas (total, concluídas, pendentes)
+- ➕ Criação de tarefas com título e descrição
+- ✏️ Edição de tarefas
+- 🔄 Alteração de status (pendente / concluída)
+- 🗑️ Remoção de tarefas
+- 🔍 Filtros (todas, pendentes, concluídas)
+- 💾 Persistência com localStorage
+- ⚡ Atualização otimista (optimistic UI)
+- ⏳ Simulação de API com loading
+- 🔔 Feedback ao usuário com toast contextual
 
-2. Instale as dependências:
-   ```bash
-   pnpm install
-   ```
+---
 
-## Uso
+## 🧩 Arquitetura
 
-### Desenvolvimento
-Inicie o servidor local:
+O projeto segue uma organização baseada em **feature-first**, aproximando-se de aplicações reais:
+
+```
+App
+ ├── TaskForm
+ ├── TaskList
+ │     └── TaskCard
+ └── Services
+```
+
+### Princípios aplicados
+
+- Separação de responsabilidades
+- Componentização
+- Reutilização de código
+- Baixo acoplamento
+- Organização por domínio (features)
+
+---
+
+## ⚙️ Tecnologias Utilizadas
+
+- **Angular 21 (standalone)**
+- **Signals & Computed** (estado reativo moderno)
+- **Tailwind CSS 4**
+- **TypeScript**
+- **Vitest (Testes unitários)**
+- **PNPM**
+
+---
+
+## 🧠 Decisões Técnicas
+
+### ✔ Uso de Signals
+Escolhido para simplificar o gerenciamento de estado local sem necessidade de bibliotecas externas.
+
+### ✔ Simulação de API
+Implementada com async/await e delay artificial para representar chamadas reais.
+
+### ✔ Atualização otimista
+No toggle de status, a UI responde instantaneamente antes da persistência — melhorando a experiência do usuário.
+
+### ✔ Componentização
+Divisão clara entre:
+- UI (components)
+- Lógica (services)
+- Estado (signals)
+
+---
+
+## 🧪 Testes
+
+O projeto inclui testes unitários utilizando **Vitest**, cobrindo:
+
+- CRUD completo
+- Regras de negócio
+- Persistência de dados
+
+---
+
+## 🚀 Como rodar o projeto
+
 ```bash
+git clone https://github.com/henriquearaujo/angular-task-flow
+cd angular-task-flow
+pnpm install
 pnpm start
-# ou
-ng serve
 ```
-Acesse `http://localhost:4200` no navegador.
 
-### Build de Produção
-Compile para produção:
+Acesse:
+
+```
+http://localhost:4200
+```
+
+---
+
+## 🏗️ Build de produção
+
 ```bash
-pnpm run build
-# ou
-ng build
+pnpm build
 ```
 
-### Testes
-Execute os testes:
+---
+
+## 🧪 Rodar testes
+
 ```bash
 pnpm test
-# ou
-ng test
 ```
 
-## Estrutura do Projeto
+---
 
-- `src/app/`: Código da aplicação
-  - `core/`: Serviços e lógica central
-  - `features/tasks/`: Funcionalidades relacionadas a tarefas
-  - `shared/`: Componentes compartilhados
-- `public/`: Assets estáticos
-- `src/styles.css`: Estilos globais com Tailwind
+## 📌 Roadmap (Evoluções futuras)
 
-## Comandos Úteis
+- Integração com API real (Node / NestJS / Firebase)
+- Estado global (facade ou store)
+- Skeleton loading
+- Animações de UI
+- Deploy (Vercel / Netlify)
 
-- `ng generate component <nome>`: Criar novo componente
-- `ng generate service <nome>`: Criar novo serviço
-- `pnpm run watch`: Build em modo watch para desenvolvimento
-```
+---
 
-Isso compilará o projeto e armazenará os artefatos de build no diretório `dist/`. Por padrão, o build de produção otimiza a aplicação para performance e velocidade.
+## 🎯 Objetivo do projeto
 
-## Executando Testes Unitários
+Este projeto foi desenvolvido como parte da evolução contínua como desenvolvedor front-end, com foco em:
 
-Para executar testes unitários com o [Vitest](https://vitest.dev/), use:
-```bash
-ng test
-```
+- Angular moderno
+- Boas práticas de arquitetura
+- Experiência do usuário
+- Código escalável
 
-## Executando Testes End-to-End
+---
 
-Para testes end-to-end (e2e), execute:
-```bash
-ng e2e
-```
+## 👨‍💻 Autor
 
-O Angular CLI não vem com um framework de teste e2e por padrão. Escolha um que atenda às suas necessidades.
+**Henrique Araújo**  
+Front-end Developer | UI/UX Designer  
 
-## Estrutura do Projeto
+📧 Email: henrique.e.araujo@gmail.com  
+🔗 LinkedIn: https://www.linkedin.com/in/henriquearaujo  
 
-- `src/app/core/`: Lógica central da aplicação
-- `src/app/features/tasks/`: Funcionalidades relacionadas a tarefas (componentes, páginas, serviços, modelos)
-- `src/app/shared/`: Componentes e utilitários compartilhados
+---
 
-## Recursos Adicionais
+## 💬 Observação
 
-Para mais informações sobre o uso do Angular CLI, incluindo referências detalhadas de comandos, visite a [Visão Geral e Referência de Comandos do Angular CLI](https://angular.dev/tools/cli).
+Projeto voltado para fins de estudo e demonstração de habilidades técnicas alinhadas com o mercado atual.
