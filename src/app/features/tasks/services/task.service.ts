@@ -6,21 +6,22 @@ const STORAGE_KEY = 'tasks';
 @Injectable({
   providedIn: 'root',
 })
+
 export class TaskService {
 
   private getTasks(): Task[] {
-  if (typeof window === 'undefined') return [];
+    if (typeof window === 'undefined') return [];
 
-  const data = localStorage.getItem(STORAGE_KEY);
-  if (!data) return [];
+    const data = localStorage.getItem(STORAGE_KEY);
+    if (!data) return [];
 
-  const parsed = JSON.parse(data);
+    const parsed = JSON.parse(data);
 
-  return parsed.map((task: any) => ({
-    ...task,
-    status: task.status === 'completed' ? 'completed' : 'pending',
-  }));
-}
+    return parsed.map((task: any) => ({
+      ...task,
+      status: task.status === 'completed' ? 'completed' : 'pending',
+    }));
+  }
 
   private saveTasks(tasks: Task[]): void {
     if (typeof window === 'undefined') return;
@@ -28,33 +29,52 @@ export class TaskService {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   }
 
-  getAll(): Task[] {
+  private simulateApiDelay(): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, 600));
+  }
+
+  async getAll(): Promise<Task[]> {
+    await this.simulateApiDelay();
     return this.getTasks();
   }
 
-  add(task: Task): void {
+  async add(task: Task): Promise<void> {
+    await this.simulateApiDelay();
+
     const tasks = this.getTasks();
     tasks.push(task);
     this.saveTasks(tasks);
   }
 
-  toggleStatus(id: string): void {
-  const tasks: Task[] = this.getTasks().map((task) => {
-    if (task.id !== id) return task;
+  async update(updatedTask: Task): Promise<void> {
+    await this.simulateApiDelay();
 
-    return {
-      ...task,
-      status: task.status === 'pending'
-        ? ('completed' as TaskStatus)
-        : ('pending' as TaskStatus),
-    };
-  });
+    const tasks = this.getTasks().map((task) =>
+      task.id === updatedTask.id ? updatedTask : task
+    );
 
-  this.saveTasks(tasks);
-}
+    this.saveTasks(tasks);
+  }
 
-  remove(id: string): void {
-    const tasks = this.getTasks().filter(task => task.id !== id);
+  async toggleStatus(id: string): Promise<void> {
+    await this.simulateApiDelay();
+
+    const tasks: Task[] = this.getTasks().map((task) => {
+      if (task.id !== id) return task;
+
+      return {
+        ...task,
+        status: task.status === 'pending' ? 'completed' : 'pending',
+      };
+    });
+
+    this.saveTasks(tasks);
+  }
+
+  async remove(id: string): Promise<void> {
+    await this.simulateApiDelay();
+
+    const tasks = this.getTasks().filter((task) => task.id !== id);
     this.saveTasks(tasks);
   }
 }

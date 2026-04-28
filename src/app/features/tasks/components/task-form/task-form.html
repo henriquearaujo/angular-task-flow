@@ -1,0 +1,41 @@
+<div class="mb-6 bg-slate-900 p-4 rounded-xl border border-slate-800">
+  <h3 class="text-lg font-semibold mb-4">
+    {{ taskToEdit ? 'Editar tarefa' : 'Nova tarefa' }}
+  </h3>
+
+  <div class="flex flex-col gap-3">
+    <input
+      type="text"
+      placeholder="Título da tarefa"
+      class="rounded-lg bg-slate-950 border border-slate-700 px-3 py-2 text-sm outline-none focus:border-indigo-500"
+      [ngModel]="title()"
+      (ngModelChange)="title.set($event)"
+    />
+
+    <textarea
+      placeholder="Descrição (opcional)"
+      class="rounded-lg bg-slate-950 border border-slate-700 px-3 py-2 text-sm outline-none focus:border-indigo-500"
+      [ngModel]="description()"
+      (ngModelChange)="description.set($event)"
+    ></textarea>
+
+    <div class="flex justify-end gap-2">
+      @if (taskToEdit) {
+        <button
+          class="rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold transition hover:bg-slate-800 active:scale-95"
+          (click)="cancelEdit()"
+        >
+          Cancelar
+        </button>
+      }
+
+      <button
+        class="rounded-lg bg-indigo-500 px-4 py-2 text-sm font-semibold transition hover:bg-indigo-400 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+        [disabled]="isLoading"
+        (click)="submit()"
+      >
+        {{ isLoading ? 'Salvando...' : taskToEdit ? 'Salvar alterações' : 'Criar tarefa' }}
+      </button>
+    </div>
+  </div>
+</div>
